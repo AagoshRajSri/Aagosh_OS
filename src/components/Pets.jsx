@@ -16,6 +16,9 @@ export default function Pets() {
   const [catSpeech, setCatSpeech] = useState(null);
   const [dogSpeech, setDogSpeech] = useState(null);
 
+  const [catFailed, setCatFailed] = useState(false);
+  const [dogFailed, setDogFailed] = useState(false);
+
   useEffect(() => {
     // Random walk pathfinding setup
     const movePet = (ref, isDog) => {
@@ -94,8 +97,12 @@ export default function Pets() {
           </div>
         )}
         <div className="pet-float">
-          <img src="/assets/cat.png" alt="Cat" className="w-16 h-16 object-contain filter drop-shadow-[0_4px_12px_rgba(255,110,199,0.5)]"
-               style={{ imageRendering: 'pixelated' }} onError={(e) => { e.target.outerHTML = '<div class="text-4xl filter drop-shadow-[0_0_10px_#ff6ec7]">🐱</div>' }} />
+          {catFailed ? (
+            <div className="text-4xl filter drop-shadow-[0_0_10px_#ff6ec7]">🐱</div>
+          ) : (
+            <img src="/assets/cat.png" alt="Cat" className="w-16 h-16 object-contain filter drop-shadow-[0_4px_12px_rgba(255,110,199,0.5)]"
+                 style={{ imageRendering: 'pixelated' }} onError={() => setCatFailed(true)} />
+          )}
         </div>
       </div>
 
@@ -108,8 +115,12 @@ export default function Pets() {
           </div>
         )}
         <div className="pet-float" style={{ animationDelay: '-1.2s' }}>
-          <img src="/assets/dog.png" alt="Dog" className="w-16 h-16 object-contain filter drop-shadow-[0_4px_12px_rgba(127,255,212,0.5)]"
-               style={{ imageRendering: 'pixelated' }} onError={(e) => { e.target.outerHTML = '<div class="text-4xl filter drop-shadow-[0_0_10px_#7fffd4]">🐕</div>' }} />
+          {dogFailed ? (
+            <div className="text-4xl filter drop-shadow-[0_0_10px_#7fffd4]">🐕</div>
+          ) : (
+            <img src="/assets/dog.png" alt="Dog" className="w-16 h-16 object-contain filter drop-shadow-[0_4px_12px_rgba(127,255,212,0.5)]"
+                 style={{ imageRendering: 'pixelated' }} onError={() => setDogFailed(true)} />
+          )}
         </div>
       </div>
     </div>
