@@ -6,7 +6,7 @@ import { SKILLS } from '../../data';
 function RarityBadge({ rarity }) {
   const label = rarity.toUpperCase();
   return (
-    <span className={`text-[8px] font-bold px-2 py-0.5 rounded-full rarity-${rarity}`}>
+    <span className={`text-[8px] font-bold px-2 py-0.5 font-mono bg-[#1A1A1A] text-[#888] border border-[#333]`}>
       {label}
     </span>
   );
@@ -43,38 +43,36 @@ function SkillCard({ skill }) {
     >
       <div ref={innerRef} className="flip-card-inner w-full h-full relative" style={{ transformStyle: 'preserve-3d' }}>
         {/* Front */}
-        <div className="flip-card-front bg-surface2 border border-purple-500/40 p-3 flex flex-col justify-between"
-             style={{ background: 'linear-gradient(135deg, rgba(30,26,46,0.9), rgba(42,36,64,0.9))' }}>
+        <div className="flip-card-front bg-[#111] border border-[#333] p-3 flex flex-col justify-between hover:border-[#555]">
           <div>
             <div className="flex justify-between items-start mb-2">
-              <div className="text-[12px] font-bold text-pink-400 leading-tight pr-2">{skill.name}</div>
+              <div className="text-[12px] font-bold text-[#ededed] font-mono leading-tight pr-2">{skill.name}</div>
               <RarityBadge rarity={skill.rarity} />
             </div>
-            <div className="text-[9px] text-teal-400 font-bold tracking-widest">{skill.cat}</div>
-            <div className="text-[9px] text-gray-400">{skill.power}</div>
+            <div className="text-[9px] text-[#aaa] font-bold tracking-widest font-mono">{skill.cat}</div>
+            <div className="text-[9px] text-[#666] font-mono mt-1">{skill.power}</div>
           </div>
           <div>
-            <div className="flex justify-between text-[9px] mb-1">
-              <span className="text-gray-500">POWER LVL</span>
-              <span className="text-yellow-400 font-bold">{skill.level}</span>
+            <div className="flex justify-between text-[9px] mb-1 font-mono">
+              <span className="text-[#666]">POWER LVL</span>
+              <span className="text-[#ededed] font-bold">{skill.level}</span>
             </div>
-            <div className="h-1.5 bg-black rounded-full overflow-hidden">
-              <div className="h-full rounded-full bg-gradient-to-r from-purple-600 to-pink-500" style={{ width: `${skill.level}%` }} />
+            <div className="h-1 bg-[#222] overflow-hidden border border-[#333]">
+              <div className="h-full bg-[#ededed]" style={{ width: `${skill.level}%` }} />
             </div>
           </div>
         </div>
 
         {/* Back */}
-        <div className="flip-card-back bg-surface border border-pink-500 p-3 flex flex-col justify-between"
-             style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(255,110,199,0.15))' }}>
+        <div className="flip-card-back bg-[#1A1A1A] border border-[#555] p-3 flex flex-col justify-between">
           <div>
-            <div className="text-[10px] text-teal-300 mb-1">LEARNED: <span className="text-white">{skill.learned}</span></div>
-            <div className="text-[9px] text-gray-300 leading-snug mb-2">"{skill.desc}"</div>
-            <div className="text-[8px] text-purple-300">
-              <span className="font-bold">USED IN:</span> {skill.usedIn.join(' • ')}
+            <div className="text-[10px] text-[#aaa] mb-1 font-mono">LEARNED: <span className="text-[#ededed]">{skill.learned}</span></div>
+            <div className="text-[9px] text-[#888] leading-snug mb-2 font-sans">"{skill.desc}"</div>
+            <div className="text-[8px] text-[#666] font-mono">
+              <span className="font-bold text-[#aaa]">USED IN:</span> {skill.usedIn.join(' • ')}
             </div>
           </div>
-          <div className="text-[9px] text-pink-400 italic text-center font-bold">
+          <div className="text-[9px] text-[#888] italic text-center font-mono">
             {skill.quip}
           </div>
         </div>
@@ -114,29 +112,28 @@ export default function SkillsWindow() {
   const handleTabChange = (cat) => {
     if (cat === activeTab) return;
     if (containerRef.current) {
-      // Scan-line wipe transition
       gsap.fromTo(containerRef.current,
-        { clipPath: 'inset(0 100% 0 0)' },
-        { clipPath: 'inset(0 0% 0 0)', duration: 0.4, ease: 'power2.out' }
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }
       );
     }
     setActiveTab(cat);
   };
 
   return (
-    <OSWindow id="skills" title="Skills.dll — TECH ARSENAL" defaultPos={{ x: 140, y: 70 }} width={760} maxBodyH="75vh">
+    <OSWindow id="skills" title="Skills.dll — TECH_ARSENAL" defaultPos={{ x: 140, y: 70 }} width={760} maxBodyH="75vh">
       <div className="flex flex-col h-full">
         {/* Header */}
-        <div className="flex justify-between items-end mb-6 border-b border-purple-500/30 pb-4">
+        <div className="flex justify-between items-end mb-6 border-b border-[#333] pb-4">
           <div>
-            <div className="text-[24px] font-bold text-pink-500 tracking-widest" style={{ fontFamily: 'Orbitron, monospace' }}>
-              LOADOUT MODULES
+            <div className="text-[20px] font-bold text-[#ededed] tracking-widest font-mono">
+              LOADOUT_MODULES
             </div>
-            <div className="text-[10px] text-gray-400">Select category to filter active equipment.</div>
+            <div className="text-[10px] text-[#888] font-mono">Select category to filter active equipment.</div>
           </div>
           <div className="text-right">
-            <div className="text-[10px] text-teal-400 font-bold">TOTAL POWER LEVEL</div>
-            <div ref={powerRef} className="text-[28px] font-bold text-yellow-400 drop-shadow-[0_0_10px_rgba(255,224,102,0.6)]">
+            <div className="text-[10px] text-[#888] font-bold font-mono">TOTAL POWER LEVEL</div>
+            <div ref={powerRef} className="text-[28px] font-bold text-[#ededed] font-mono">
               {totalPower}
             </div>
           </div>
@@ -148,10 +145,10 @@ export default function SkillsWindow() {
             <button
               key={cat}
               onClick={() => handleTabChange(cat)}
-              className={`whitespace-nowrap px-4 py-2 rounded-lg text-[10px] font-bold transition-all cursor-pointer ${
+              className={`whitespace-nowrap px-4 py-2 text-[10px] font-mono font-bold transition-colors cursor-pointer border rounded-sm ${
                 activeTab === cat 
-                  ? 'bg-purple-600 text-white shadow-[0_0_12px_rgba(139,92,246,0.5)] border border-purple-400' 
-                  : 'bg-black/40 text-gray-400 border border-purple-500/30 hover:border-purple-400 hover:text-white'
+                  ? 'bg-[#ededed] text-[#0A0A0A] border-transparent' 
+                  : 'bg-transparent text-[#888] border-[#333] hover:border-[#666] hover:text-[#ccc]'
               }`}
             >
               {cat}

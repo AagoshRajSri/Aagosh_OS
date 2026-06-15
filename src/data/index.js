@@ -1,34 +1,30 @@
 export const ABOUT = {
   developerName: "Aagosh Raj Srivastava",
   avatarEmoji: "⚡",
-  shortBio: "Hi! I'm Aagosh — a full-stack engineer and distributed systems enthusiast obsessed with building high-concurrency architectures, post-quantum cryptography, and real-time platforms. I bridge data pipeline efficiency with high-performance visualization to build software that scales securely.",
+  shortBio: "Hi! I'm Aagosh — a full-stack engineer and distributed systems enthusiast focused on building scalable, performant architectures and secure applications. I enjoy bridging data pipeline efficiency with high-performance visualization to deliver impactful software.",
   gauges: [
-    { label: "CREATIVITY_QUOTIENT", val: "98%", pct: 98, cls: "gauge-pink", valCls: "text-pink" },
-    { label: "CAFFEINE_LEVEL", val: "ERR: OVERFLOW", pct: 100, cls: "gauge-teal overflow-pulse", valCls: "overflow-blink text-red-400" },
-    { label: "LOGIC_CIRCUITRY", val: "ACTIVE", pct: 97, cls: "gauge-green", valCls: "text-green-400" },
-    { label: "VIBE_CONSISTENCY", val: "95%", pct: 95, cls: "gauge-purple", valCls: "text-purple-400" }
+    { label: "PROBLEM_SOLVING", val: "95%", pct: 95, cls: "gauge-pink", valCls: "text-pink" },
+    { label: "COFFEE_INTAKE", val: "NOMINAL", pct: 85, cls: "gauge-teal", valCls: "text-teal-400" },
+    { label: "LOGIC_CIRCUITRY", val: "ACTIVE", pct: 90, cls: "gauge-green", valCls: "text-green-400" },
+    { label: "CODE_QUALITY", val: "STRICT", pct: 92, cls: "gauge-purple", valCls: "text-purple-400" }
   ],
   systemQuotes: [
-    "\"Ship it. Then fix it. Then ship that.\"",
     "\"The best architecture is the one that survives production.\"",
-    "\"Latency is a bug. Caffeine is the patch.\"",
-    "\"Post-quantum today, quantum-proof tomorrow.\"",
-    "\"sleep(0): Not a bug, a feature.\"",
-    "\"Real-time or go home. Sub-100ms or we riot.\"",
-    "\"Git push --force is a personality trait.\"",
-    "\"The diff was one line. The fix took three days.\""
+    "\"Optimize for readability, then for performance.\"",
+    "\"Building robust systems is a continuous process.\"",
+    "\"Data pipelines should be as transparent as possible.\""
   ],
   terminalResponses: {
-    coffee: "☕ Caffeine Level: CRITICAL. Brewing emergency reserves... [OK]",
-    hire: "✅ Excellent judgment detected. Forwarding resume to your HR system...",
-    hello: "👋 Hey! Nice to meet you. Type 'hire' for the best decision of your life.",
-    skills: "🧬 Loading skill matrix... React, Node.js, Kotlin, Python, Docker, PostgreSQL, Three.js... [OVERFLOW]",
+    coffee: "☕ Coffee break engaged. System operating at optimal efficiency.",
+    hire: "✅ Thank you for your interest! Forwarding contact details...",
+    hello: "👋 Hey! Nice to meet you. Type 'projects' to see my work.",
+    skills: "🧬 Loading skill matrix... React, Node.js, Python, PostgreSQL, Docker... [OK]",
     projects: "📁 5 active project files. Type 'decrypt' to access mission archives.",
     decrypt: "🔓 Authorization required. Please open Projects.sys for decryption.",
     music: "🎵 Playing: lo-fi beats to architect distributed systems to...",
     help: "📟 Commands: hello | hire | coffee | skills | projects | music | help",
-    dream: "💜 AagoshRaj_OS: A living portfolio built with caffeine and passion.",
-    default: (input) => `> Processing: "${input}"... RESULT: ${["Fascinating.", "Intriguing input.", "404: Context not found.", "Logging to creativity matrix..."][Math.floor(Math.random()*4)]}`
+    dream: "💜 AagoshRaj_OS: A portfolio built with precision and passion.",
+    default: (input) => `> Processing: "${input}"... RESULT: ${["Understood.", "Command acknowledged.", "Logging action...", "System ready."][Math.floor(Math.random()*4)]}`
   }
 };
 
@@ -39,13 +35,13 @@ export const PROJECTS = [
     name: "RAJ-AI",
     clearance: "5",
     status: "in-progress",
-    desc: "A hardware-independent, fully autonomous software platform designed to replace fragmented human-operated tools with a unified system capable of executing complex, multi-domain tasks end-to-end without manual intervention. Features a dedicated Kotlin API gateway layer, expanded microservice cluster, a Flutter multi-platform UI, and an elevated Python AI tier serving as the primary intelligence engine.",
+    desc: "A unified software platform integrating a Kotlin API gateway, microservices, and a Python-based intelligence engine. Designed to consolidate complex tasks into a seamless, automated workflow.",
     tags: ["Python", "Flutter", "Kotlin", "Microservices", "AI Orchestration"],
     specs: {
-      "Type": "Autonomous Software Platform",
-      "Status": "PROPOSED / ENHANCED",
+      "Type": "Automated Software Platform",
+      "Status": "UNDER CONSTRUCTION",
       "Clearance": "LEVEL-5",
-      "Intelligence Engine": "Python AI Tier"
+      "Core Language": "Python / Kotlin"
     },
     demo: "#",
     source: "#"
@@ -56,13 +52,13 @@ export const PROJECTS = [
     name: "ORBIT",
     clearance: "4",
     status: "active",
-    desc: "Scalable Post-Quantum Messaging Platform. Architected a high-concurrency engine utilizing Socket.IO and a Redis adapter for horizontal scaling (100+ concurrent broadcasts, sub-100ms latency). Features an offline-first queuing system and a post-quantum zero-trust defense layer integrating X3DH, Double Ratchet, Argon2id, and ML-KEM-768 resistance to mitigate OWASP threat vectors.",
-    tags: ["Socket.IO", "Redis", "Node.js", "ML-KEM-768", "Argon2id", "Docker"],
+    desc: "A scalable messaging platform utilizing Socket.IO and a Redis adapter for efficient horizontal scaling. Features an offline-first queuing system and end-to-end encryption to secure communications.",
+    tags: ["Socket.IO", "Redis", "Node.js", "Encryption", "Docker"],
     specs: {
-      "Type": "Distributed Messaging Backbone",
+      "Type": "Messaging Application",
       "Status": "PRODUCTION",
       "Clearance": "LEVEL-4",
-      "Security": "Post-Quantum Zero-Trust"
+      "Security": "End-to-End Encrypted"
     },
     demo: "https://orbitnexus.vercel.app",
     source: "https://github.com/AagoshRajSri/Orbit"
@@ -73,15 +69,15 @@ export const PROJECTS = [
     name: "PRAHAR",
     clearance: "4",
     status: "active",
-    desc: "Enterprise Geospatial Intelligence Platform. Engineered an event-driven telemetry pipeline using Socket.io and a localized 'memoryEngine' cache layer to broadcast 2-second heatmap ticks, slashing alert latency from 15s to <2s. Deployed GPU-accelerated Three.js and WebGL rendering pipelines to visualize 100K+ live geospatial points at a stable 60 FPS.",
-    tags: ["Three.js", "WebGL", "Socket.io", "JWT", "Proximity Search"],
+    desc: "Geospatial Intelligence Platform featuring an event-driven telemetry pipeline using Socket.io and localized caching. Utilizes Three.js and WebGL to visualize large-scale geospatial data efficiently.",
+    tags: ["Three.js", "WebGL", "Socket.io", "JWT", "Geospatial"],
     specs: {
-      "Type": "Geospatial Intelligence Engine",
+      "Type": "Data Visualization",
       "Status": "PRODUCTION",
       "Clearance": "LEVEL-4",
-      "Performance": "60 FPS / 100K+ Live Points"
+      "Performance": "Optimized Rendering"
     },
-    demo: "#",
+    demo: "https://github.com/AagoshRajSri/PRAHAR",
     source: "https://github.com/AagoshRajSri/PRAHAR"
   },
   {
@@ -90,15 +86,15 @@ export const PROJECTS = [
     name: "FORGE AI",
     clearance: "3",
     status: "active",
-    desc: "Intelligent AI Code Generation Platform. Architected a dual-model pipeline routing between Qwen 32B/7B to optimize inference, cutting latency to sub-60s across 1,000+ daily requests with a 95% success rate and credit-safe refund logic. Paired with serverless PostgreSQL and Prisma backend to support 5K concurrent profiles.",
-    tags: ["Qwen 32B/7B", "Prisma", "PostgreSQL", "React", "SaaS UI"],
+    desc: "An AI Code Generation Platform built with a React frontend, PostgreSQL, and Prisma backend. Integrates LLM models for efficient code snippet generation with robust user session management.",
+    tags: ["React", "Prisma", "PostgreSQL", "LLM Integration", "SaaS"],
     specs: {
-      "Type": "AI Code Generation Platform",
+      "Type": "Code Generation Tool",
       "Status": "LIVE",
       "Clearance": "LEVEL-3",
-      "Concurrency": "5K Active Profiles"
+      "Database": "PostgreSQL"
     },
-    demo: "#",
+    demo: "https://github.com/AagoshRajSri/Forge-AI",
     source: "https://github.com/AagoshRajSri/Forge-AI"
   },
   {
@@ -107,13 +103,13 @@ export const PROJECTS = [
     name: "NextRole",
     clearance: "3",
     status: "active",
-    desc: "A browser extension + backend system that autonomously monitors career pages, extracts job listings via Playwright, and delivers intelligent alerts. Built for job-seekers who refuse to miss an opportunity.",
+    desc: "A browser extension and backend system that monitors career pages and job boards, extracting listings via Playwright to deliver timely alerts to users.",
     tags: ["Node.js", "PostgreSQL", "Playwright", "WXT", "Redis"],
     specs: {
-      "Type": "Full-Stack Extension",
+      "Type": "Browser Extension",
       "Status": "PRODUCTION",
       "Clearance": "LEVEL-3",
-      "Performance": "15-min scan cycle"
+      "Scraping": "Playwright Engine"
     },
     demo: "https://github.com/AagoshRajSri/NextRole",
     source: "https://github.com/AagoshRajSri/NextRole"
@@ -123,145 +119,144 @@ export const PROJECTS = [
 export const SKILLS = [
   {
     name: "Java & Spring Boot",
-    cat: "BACK-END ALCHEMY",
-    level: 95,
-    power: "Enterprise Cloud Scale",
-    rarity: "legendary",
-    desc: "Spring Boot, Spring Cloud, microservice architecture, and robust distributed systems design.",
-    learned: "2022",
+    cat: "BACK-END",
+    level: 90,
+    power: "Enterprise Architectures",
+    rarity: "epic",
+    desc: "Developing scalable REST APIs and microservices using Spring Boot, Spring Cloud, and related ecosystem tools.",
+    learned: "2023",
     usedIn: ["ORBIT", "PRAHAR"],
-    quip: "One annotation to rule them all."
+    quip: "Object-oriented and reliable."
   },
   {
     name: "Node.js & Express",
-    cat: "BACK-END ALCHEMY",
-    level: 96,
-    power: "Async Event-Loop Mastery",
-    rarity: "legendary",
-    desc: "High-concurrency real-time architectures, Socket.IO, Fastify pipelines, and event streaming.",
-    learned: "2022",
+    cat: "BACK-END",
+    level: 92,
+    power: "Asynchronous Pipelines",
+    rarity: "epic",
+    desc: "Building high-concurrency applications, real-time WebSockets with Socket.IO, and efficient REST services.",
+    learned: "2024",
     usedIn: ["ORBIT", "NextRole", "PRAHAR"],
-    quip: "Callback hell? Not in this timeline."
+    quip: "Event-driven architecture."
   },
   {
-    name: "React 18+ & Three.js",
-    cat: "FRONT-END SORCERY",
-    level: 94,
-    power: "GPU-Accelerated Interfaces",
-    rarity: "legendary",
-    desc: "WebGL rendering, Vite, Zustand state loops, frustum culling, and fluid GSAP animations.",
-    learned: "2022",
+    name: "React & UI Engineering",
+    cat: "FRONT-END",
+    level: 88,
+    power: "Interactive Interfaces",
+    rarity: "epic",
+    desc: "Creating responsive, accessible web applications with React, Vite, Tailwind CSS, and state management tools.",
+    learned: "2024",
     usedIn: ["FORGE AI", "PRAHAR", "AagoshRaj_OS"],
-    quip: "Your GPU is now my canvas."
+    quip: "Component-driven design."
   },
   {
     name: "PostgreSQL & Redis",
-    cat: "BACK-END ALCHEMY",
-    level: 93,
-    power: "High-Performance Persistence",
-    rarity: "epic",
-    desc: "Proximity search, compound index lookup tuning, lean data projections, and caching backbones.",
+    cat: "DATABASES",
+    level: 85,
+    power: "Data Management",
+    rarity: "rare",
+    desc: "Designing normalized schemas, optimizing queries, and implementing caching layers for performance.",
     learned: "2023",
     usedIn: ["ORBIT", "NextRole", "FORGE AI"],
-    quip: "SELECT * FROM talent WHERE level > 90;"
+    quip: "Structured and accessible."
   },
   {
-    name: "Docker & Kubernetes",
-    cat: "DEVOPS GUARD",
-    level: 90,
-    power: "Orchestrated Infrastructure",
-    rarity: "epic",
-    desc: "Container deployments, CI/CD with GitHub Actions, Prometheus metrics, and Grafana telemetry.",
+    name: "Docker & CI/CD",
+    cat: "DEVOPS",
+    level: 80,
+    power: "Containerization",
+    rarity: "rare",
+    desc: "Containerizing applications, creating deployment pipelines with GitHub Actions, and managing cloud deployments.",
     learned: "2023",
     usedIn: ["ORBIT", "PRAHAR"],
-    quip: "kubectl apply -f genius.yaml"
+    quip: "Consistent environments."
   },
   {
-    name: "Python & AI/ML",
-    cat: "AI SORCERY",
-    level: 88,
-    power: "LLM Orchestration Engine",
+    name: "Python & AI Tools",
+    cat: "INTELLIGENCE",
+    level: 85,
+    power: "Data Processing",
     rarity: "rare",
-    desc: "Qwen/LLaMA fine-tuning, LangChain pipelines, prompt engineering, and model serving with vLLM.",
+    desc: "Scripting, data analysis, and integrating machine learning models into full-stack applications.",
     learned: "2023",
     usedIn: ["RAJ-AI", "FORGE AI"],
-    quip: "pip install superintelligence"
+    quip: "Readable and versatile."
   },
   {
-    name: "Post-Quantum Crypto",
-    cat: "SECURITY CORE",
-    level: 85,
-    power: "Quantum-Resistant Defense",
+    name: "Security Fundamentals",
+    cat: "SECURITY",
+    level: 80,
+    power: "Application Defense",
     rarity: "rare",
-    desc: "ML-KEM-768, X3DH, Double Ratchet, Argon2id — building defenses against future quantum adversaries.",
+    desc: "Implementing authentication, authorization, and secure communication protocols to protect user data.",
     learned: "2024",
     usedIn: ["ORBIT"],
-    quip: "Your RSA keys are already obsolete."
+    quip: "Security by design."
   },
   {
-    name: "Kotlin & Flutter",
-    cat: "MOBILE FORGE",
-    level: 80,
-    power: "Cross-Platform Efficiency",
+    name: "Kotlin & Mobile",
+    cat: "MOBILE",
+    level: 75,
+    power: "Cross-Platform",
     rarity: "common",
-    desc: "Android-native Kotlin gateway layers, Dart Flutter multi-platform UI with Material Design 3.",
+    desc: "Developing native Android components and cross-platform interfaces using Flutter.",
     learned: "2024",
     usedIn: ["RAJ-AI"],
-    quip: "One codebase, every platform."
+    quip: "Mobile-first approach."
   }
 ];
 
 export const EXPERIENCE = [
   {
-    version: "v3.1.0 — CURRENT BUILD",
-    title: "B.Tech Computer Science and Engineering (AI/ML)",
+    version: "v3.1.0 — CURRENT",
+    title: "B.Tech Computer Science and Engineering",
     company: "SRM University, Andhra Pradesh",
     period: "AUG 2023 — 2027",
-    desc: "Specializing in AI/ML, Distributed Systems, Advanced DBMS, Operating Systems, Algorithms, Cryptography and Network Security.",
-    rewards: ["AI/ML Core Intelligence", "Cryptographic Fundamentals", "Architectural Foundations"],
-    status: "[ACTIVE QUEST]",
+    desc: "Focusing on AI/ML, Distributed Systems, Database Management, and Core Computer Science Fundamentals.",
+    rewards: ["Algorithms", "System Architecture", "Software Engineering"],
+    status: "[IN PROGRESS]",
     completed: false,
-    xp: "+2400 XP"
+    xp: "Current Academic Focus"
   },
   {
-    version: "v2.1.0 — PATCH APPLIED",
+    version: "v2.1.0 — COMPLETED",
     title: "Generative AI Project Trainee",
     company: "Finlatics",
     period: "JUN 2025 — AUG 2025",
-    desc: "Optimized LLM response streaming UI components by tuning event-loop processing and token buffering, reducing perceived user latency by 250ms. Designed high-precision prompt-chaining interfaces increasing feedback efficiency by 40%.",
-    rewards: ["LLM Streaming Optimization", "Prompt-Chaining Orchestration", "Latency -250ms"],
-    status: "[QUEST COMPLETE]",
+    desc: "Optimized UI components for LLM response streaming, improving perceived performance. Developed interfaces for prompt-chaining to enhance user feedback efficiency.",
+    rewards: ["UI Optimization", "Prompt Engineering", "Performance Tuning"],
+    status: "[COMPLETED]",
     completed: true,
-    xp: "+1800 XP"
+    xp: "Valuable Industry Experience"
   },
   {
-    version: "v1.8.0 — PATCH APPLIED",
+    version: "v1.8.0 — COMPLETED",
     title: "Full Stack Developer Intern",
     company: "Future Interns",
     period: "JUN 2025 — JUL 2025",
-    desc: "Accelerated Core Web Vitals (LCP) by 40% using code-splitting, lazy loading, and asset tuning, achieving a 100/100 Lighthouse score. Engineered high-conversion e-commerce interfaces with React and Stripe integrating idempotent payment processing.",
-    rewards: ["LCP Acceleration +40%", "100/100 Lighthouse", "Idempotent Payments (99.9% consistency)"],
-    status: "[QUEST COMPLETE]",
+    desc: "Improved frontend performance metrics (Core Web Vitals) using code-splitting and asset optimization. Contributed to building secure e-commerce interfaces with payment integration.",
+    rewards: ["Performance Optimization", "E-commerce Integration", "Frontend Development"],
+    status: "[COMPLETED]",
     completed: true,
-    xp: "+1600 XP"
+    xp: "Valuable Industry Experience"
   }
 ];
 
 export const DIAG_LINES = [
-  "> Initializing personality matrix...",
-  "> Scanning creative cortex... [98% capacity]",
-  "> Checking empathy module... [NOMINAL]",
-  "> Analyzing post-quantum engine... [SECURED]",
-  "> Running caffeine dependency check... [ERR: OVERFLOW]",
-  "> Mapping project history... [5 active operations]",
-  "> Evaluating distributed consensus... [HIGH SYNC RATE]",
-  "> Final assessment: ENTITY_TYPE = Distributed Systems Engineer",
-  "> Recommendation: HIRE IMMEDIATELY",
+  "> Initializing system...",
+  "> Scanning dependencies... [OK]",
+  "> Checking network connections... [STABLE]",
+  "> Loading application modules... [SECURED]",
+  "> Verifying project integrity... [5 items validated]",
+  "> Evaluating system performance... [OPTIMAL]",
+  "> Final assessment: ENTITY_TYPE = Software Engineer",
+  "> Recommendation: REVIEW PORTFOLIO",
   "> Diagnostic complete. ✓"
 ];
 
 export const WARNINGS = [
-  { msg: "POST_QUANTUM_ALERT", sub: "ML-KEM-768 layer operational.\nQuantum adversaries mitigated." },
-  { msg: "ANOMALY_DETECTED", sub: "Autonomous architecture active:\n'RAJ-AI' executing tasks without human prompt." },
-  { msg: "MEMORY_WARNING", sub: "Processing dense geospatial streams.\nThree.js GPU frustum culling engaged." }
+  { msg: "SECURITY_UPDATE", sub: "All communication channels are encrypted.\nData integrity verified." },
+  { msg: "SYSTEM_NOMINAL", sub: "Automated monitoring active.\nResource usage is within optimal parameters." },
+  { msg: "PERFORMANCE_LOG", sub: "Render pipeline optimized.\nUI performance maintaining stable framerate." }
 ];

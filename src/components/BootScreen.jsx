@@ -12,14 +12,14 @@ const ASCII = [
 ];
 
 const LOG = [
-  { label: '[OK]',   text: 'Initializing Dream Drive...',               color: '#39ff82', cls: 'boot-ok' },
-  { label: '[OK]',   text: 'Loading Personality Matrix...',             color: '#39ff82', cls: 'boot-ok' },
-  { label: '[OK]',   text: 'Mounting /dev/creativity...',               color: '#39ff82', cls: 'boot-ok' },
-  { label: '[WARN]', text: 'Caffeine_Level: ERR_OVERFLOW — suppressed', color: '#ffe066', cls: 'boot-warn' },
-  { label: '[OK]',   text: 'Compiling Skill Tree (LVL 99)...',          color: '#39ff82', cls: 'boot-ok' },
-  { label: '[OK]',   text: 'Decrypting Project Archives...',            color: '#39ff82', cls: 'boot-ok' },
-  { label: '[OK]',   text: 'Establishing Post-Quantum Uplink...',       color: '#39ff82', cls: 'boot-ok' },
-  { label: '[SYS]',  text: 'All systems nominal. Booting AagoshRaj_OS...', color: '#8b5cf6', cls: 'boot-ok' },
+  { label: '[OK]',   text: 'Initializing Core Matrix...',               color: '#ededed', cls: 'boot-ok' },
+  { label: '[OK]',   text: 'Loading System Definitions...',             color: '#ededed', cls: 'boot-ok' },
+  { label: '[OK]',   text: 'Mounting /dev/workspace...',                color: '#ededed', cls: 'boot-ok' },
+  { label: '[WARN]', text: 'Coffee_Level: ERR_LOW — continuing anyway', color: '#FF9800', cls: 'boot-warn' },
+  { label: '[OK]',   text: 'Compiling Skill Topologies...',             color: '#ededed', cls: 'boot-ok' },
+  { label: '[OK]',   text: 'Decrypting Project Archives...',            color: '#ededed', cls: 'boot-ok' },
+  { label: '[OK]',   text: 'Establishing Secure Uplink...',             color: '#ededed', cls: 'boot-ok' },
+  { label: '[SYS]',  text: 'All systems nominal. Booting AagoshRaj_OS...', color: '#4CAF50', cls: 'boot-ok' },
 ];
 
 const GLITCH_CHARS = '!@#$%^&*<>?|░▒▓█▀▄■□▪▫◆◇○●';
@@ -36,13 +36,13 @@ function StarfieldCanvas() {
     let w = canvas.width = window.innerWidth;
     let h = canvas.height = window.innerHeight;
 
-    const STAR_COUNT = 180;
+    const STAR_COUNT = 150;
     starsRef.current = Array.from({ length: STAR_COUNT }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
       r: Math.random() * 1.5 + 0.3,
       speed: Math.random() * 0.3 + 0.05,
-      opacity: Math.random() * 0.8 + 0.2,
+      opacity: Math.random() * 0.5 + 0.1,
     }));
 
     const onResize = () => {
@@ -63,7 +63,7 @@ function StarfieldCanvas() {
         if (s.y > h) { s.y = 0; s.x = Math.random() * w; }
         ctx.beginPath();
         ctx.arc(s.x + mx * s.r, s.y + my * s.r, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(180, 150, 255, ${s.opacity})`;
+        ctx.fillStyle = `rgba(200, 200, 200, ${s.opacity})`;
         ctx.fill();
       });
       rafRef.current = requestAnimationFrame(draw);
@@ -129,11 +129,11 @@ function GlitchAsciiLogo({ visible }) {
   }, [visible]);
 
   return (
-    <div className="flex flex-col gap-0.5">
+    <div className="flex flex-col gap-0.5 text-[#ededed]">
       {lines.map((l, i) => (
-        <span key={i} className="logo-line">{l}</span>
+        <span key={i} className="font-mono whitespace-pre text-[10px] sm:text-[14px] leading-none">{l}</span>
       ))}
-      <span className="logo-sub mt-2 font-bold text-xs">CYBER_POP.SYS v0.1</span>
+      <span className="mt-2 font-bold font-mono text-[10px] text-[#888]">RETRO_MINIMAL.SYS v0.2</span>
     </div>
   );
 }
@@ -149,10 +149,16 @@ export default function BootScreen({ onComplete, isMobile }) {
   const [logDelays]                     = useState(() => LOG.map(() => 50 + Math.random() * 150));
   const [logoVisible, setLogoVisible]   = useState(false);
 
-  // DEV MODE: typing "AAGOSHRAJ" during boot
+  // DEV MODE: typing "AAGOSHRAJ" during boot + Enter key to boot
   const typedRef = useRef('');
+  const showEnterRef = useRef(false);
   useEffect(() => {
     const handler = (e) => {
+      // Enter key triggers boot when button is visible
+      if (e.key === 'Enter' && showEnterRef.current) {
+        enter();
+        return;
+      }
       typedRef.current = (typedRef.current + e.key).slice(-9).toUpperCase();
       if (typedRef.current === 'AAGOSHRAJ') {
         setDevMode(true);
@@ -164,17 +170,14 @@ export default function BootScreen({ onComplete, isMobile }) {
   }, []);
 
   useEffect(() => {
-    // Fade in logo after a short delay
     setTimeout(() => setLogoVisible(true), 300);
 
-    // Stagger log rows with variable delays
     let cumDelay = 600;
     LOG.forEach((_, i) => {
       setTimeout(() => setVisibleRows(p => [...p, i]), cumDelay);
       cumDelay += 300 + logDelays[i];
     });
 
-    // GSAP progress bar — color shifts purple→pink→cyan
     const obj = { val: 0 };
     gsap.to(obj, {
       val: 100,
@@ -183,15 +186,10 @@ export default function BootScreen({ onComplete, isMobile }) {
       onUpdate() {
         if (!fillRef.current) return;
         const v = obj.val;
-        let color;
-        if (v < 33)       color = `hsl(270, 80%, 60%)`;
-        else if (v < 66)  color = `hsl(${270 + (v-33)*2.7}, 80%, 65%)`;
-        else              color = `hsl(${270 + 90 + (v-66)*2.7}, 80%, 70%)`;
         fillRef.current.style.width = v + '%';
-        fillRef.current.style.background = color;
         if (pctRef.current) pctRef.current.textContent = Math.floor(v) + '%';
       },
-      onComplete() { setShowEnter(true); },
+      onComplete() { setShowEnter(true); showEnterRef.current = true; },
     });
   }, []);
 
@@ -201,14 +199,12 @@ export default function BootScreen({ onComplete, isMobile }) {
   }, [isMobile, onComplete]);
 
   const enter = () => {
-    // Shattering pixel dissolution
     const el = containerRef.current;
     if (!el) return;
     gsap.to(el, {
       opacity: 0,
-      scale: 1.04,
-      filter: 'blur(12px) saturate(0)',
-      duration: 0.7,
+      scale: 1.02,
+      duration: 0.5,
       ease: 'power2.in',
       onComplete: handleComplete,
     });
@@ -217,67 +213,67 @@ export default function BootScreen({ onComplete, isMobile }) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[9000] bg-black flex items-center justify-center px-4"
+      className="fixed inset-0 z-[9000] bg-[#050505] flex items-center justify-center px-4"
       style={{ zIndex: 9000 }}
     >
       <StarfieldCanvas />
       {/* Scanlines */}
-      <div className="scanlines fixed inset-0 pointer-events-none" style={{ zIndex: 2 }} />
+      <div className="retro-grid fixed inset-0 pointer-events-none" style={{ zIndex: 2, opacity: 0.3 }} />
 
-      <div className="relative w-full max-w-[680px] flex flex-col gap-5" style={{ zIndex: 3 }}>
+      <div className="relative w-full max-w-[680px] flex flex-col gap-6" style={{ zIndex: 3 }}>
         {/* ASCII logo */}
         <div className="hidden sm:block">
           <GlitchAsciiLogo visible={logoVisible} />
         </div>
         {/* Mobile fallback */}
         <div className="block sm:hidden text-center">
-          <div className="text-[22px] font-bold text-purple-400 mb-1" style={{ fontFamily: 'Orbitron, monospace' }}>AagoshRaj_OS</div>
-          <div className="text-pink-400 text-[10px] font-bold">CYBER_POP.SYS v0.1</div>
+          <div className="text-[22px] font-bold text-[#ededed] mb-1 font-mono tracking-tight">AagoshRaj_OS</div>
+          <div className="text-[#888] text-[10px] font-bold font-mono">RETRO_MINIMAL.SYS v0.2</div>
         </div>
 
         {/* Boot log */}
-        <div className="flex flex-col gap-1.5">
+        <div className="flex flex-col gap-2 font-mono">
           {LOG.map((entry, i) => (
             <div
               key={i}
               className={`text-[11px] transition-all duration-300 ${visibleRows.includes(i) ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
               style={{ transitionDelay: `${i * 30}ms` }}
             >
-              <span className={`mr-2 font-bold text-[11px] ${entry.cls}`}>{entry.label}</span>
-              <span className="text-gray-400">{entry.text}</span>
+              <span className="mr-2 font-bold text-[11px]" style={{ color: entry.color }}>{entry.label}</span>
+              <span className="text-[#aaa]">{entry.text}</span>
               {visibleRows.includes(i) && (
-                <span className={`ml-2 ${entry.cls}`}>✓</span>
+                <span className="ml-2 text-[#4CAF50]">✓</span>
               )}
             </div>
           ))}
         </div>
 
         {/* Progress bar */}
-        <div className="flex flex-col gap-1.5">
-          <span className="text-[10px] text-purple-400 tracking-[3px]">LOADING AagoshRaj_OS</span>
-          <div className="h-[14px] border-2 border-purple-600 rounded bg-black overflow-hidden">
+        <div className="flex flex-col gap-2">
+          <span className="text-[10px] text-[#666] tracking-[3px] font-mono">LOADING AagoshRaj_OS</span>
+          <div className="h-3 border border-[#333] bg-[#0A0A0A] overflow-hidden">
             <div
               ref={fillRef}
-              className="h-full rounded"
-              style={{ width: '0%', background: '#8b5cf6', transition: 'width 0.1s' }}
+              className="h-full bg-[#ededed]"
+              style={{ width: '0%', transition: 'width 0.1s' }}
             />
           </div>
-          <span ref={pctRef} className="text-[10px] text-gray-500">0%</span>
+          <span ref={pctRef} className="text-[10px] text-[#888] font-mono">0%</span>
         </div>
 
         {/* Enter button */}
         {showEnter && (
           <button
             onClick={enter}
-            className="breathe-glow border-2 bg-transparent font-mono text-[13px] px-6 py-3 cursor-pointer w-fit rounded"
-            style={{ borderColor: '#8b5cf6', color: '#8b5cf6' }}
+            autoFocus
+            className="border border-[#ededed] bg-[#ededed] font-mono font-bold text-[#050505] text-[13px] px-6 py-3 cursor-pointer w-fit transition-colors hover:bg-white animate-pulse"
             aria-label="Enter AagoshRaj_OS"
           >
-            [ PRESS ENTER TO BOOT ]
+            [ PRESS_ENTER_TO_BOOT ]
           </button>
         )}
 
-        <div className="text-[9px] text-gray-700 mt-2">
+        <div className="text-[9px] text-[#444] mt-2 font-mono">
           TIP: Type "AagoshRaj" to enter DEV_MODE
         </div>
       </div>

@@ -17,7 +17,7 @@ function Gauge({ label, val, pct, cls, valCls }) {
   const fillRef = useRef(null);
   const countRef = useRef(null);
   useEffect(() => {
-    gsap.to(fillRef.current, { width: pct + '%', duration: 1.6, ease: 'back.out(1.2)', delay: 0.4 });
+    gsap.to(fillRef.current, { width: pct + '%', duration: 1.6, ease: 'power2.out', delay: 0.4 });
     if (countRef.current && typeof pct === 'number') {
       const obj = { v: 0 };
       gsap.to(obj, { v: pct, duration: 1.6, ease: 'power2.out', delay: 0.4,
@@ -28,11 +28,11 @@ function Gauge({ label, val, pct, cls, valCls }) {
 
   return (
     <div className="flex flex-col gap-1">
-      <div className="flex justify-between text-[11px]">
-        <span className="text-teal-300">{label}</span>
-        <span ref={countRef} className={valCls}>{val}</span>
+      <div className="flex justify-between text-[11px] font-mono">
+        <span className="text-[#aaa]">{label}</span>
+        <span ref={countRef} className="text-[#ededed]">{val}</span>
       </div>
-      <div className="h-[18px] rounded border border-purple-700 overflow-hidden" style={{ background: '#1e1a2e' }}>
+      <div className="h-[12px] border border-[#333] overflow-hidden" style={{ background: '#111' }}>
         <div ref={fillRef} className={`gauge-fill ${cls}`} style={{ width: 0 }} />
       </div>
     </div>
@@ -42,15 +42,14 @@ function Gauge({ label, val, pct, cls, valCls }) {
 function SkillTree() {
   const [tooltip, setTooltip] = useState(null);
   return (
-    <div className="relative w-full h-[120px] mb-4" style={{ background: 'rgba(10,8,20,0.6)', borderRadius: 8, border: '1px solid rgba(139,92,246,0.2)' }}>
+    <div className="relative w-full h-[120px] mb-4" style={{ background: '#0d0d0d', borderRadius: 2, border: '1px solid #222' }}>
       <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
         {SKILL_NODES.map((node, i) =>
           node.links.map(j => (
             <line key={`${i}-${j}`}
               x1={`${node.x}%`} y1={`${node.y}%`}
               x2={`${SKILL_NODES[j].x}%`} y2={`${SKILL_NODES[j].y}%`}
-              stroke="rgba(139,92,246,0.4)" strokeWidth="1.5"
-              style={{ filter: 'drop-shadow(0 0 4px rgba(139,92,246,0.6))' }}
+              stroke="#333" strokeWidth="1"
             />
           ))
         )}
@@ -63,16 +62,15 @@ function SkillTree() {
           onMouseEnter={() => setTooltip(node)}
           onMouseLeave={() => setTooltip(null)}
         >
-          <div className="w-7 h-7 rounded-full border-2 border-purple-500 flex items-center justify-center text-[9px] font-bold"
-            style={{ background: 'rgba(139,92,246,0.3)', boxShadow: '0 0 8px rgba(139,92,246,0.5)' }}>
+          <div className="w-6 h-6 border border-[#555] bg-[#111] flex items-center justify-center text-[9px] font-mono text-[#aaa] group-hover:bg-[#ededed] group-hover:text-[#111] transition-colors">
             {i + 1}
           </div>
-          <span className="text-[7px] text-purple-300 mt-0.5 whitespace-nowrap">{node.name}</span>
+          <span className="text-[9px] text-[#666] mt-1 whitespace-nowrap font-mono">{node.name}</span>
         </div>
       ))}
       {tooltip && (
-        <div className="absolute top-1 left-1 bg-black/80 border border-purple-500 rounded px-2 py-1 text-[10px] text-purple-300 pointer-events-none z-10">
-          {tooltip.name} — PROFICIENT
+        <div className="absolute top-1 left-1 bg-[#111] border border-[#444] px-2 py-1 text-[10px] text-[#ededed] font-mono pointer-events-none z-10 shadow-lg">
+          {tooltip.name} // PROFICIENT
         </div>
       )}
     </div>
@@ -89,7 +87,6 @@ export default function AboutWindow() {
   const bodyRef = useRef(null);
   const bioSkipped = useRef(false);
 
-  // Typewriter bio effect
   useEffect(() => {
     const text = ABOUT.shortBio;
     let i = 0;
@@ -116,12 +113,8 @@ export default function AboutWindow() {
   };
 
   const injectMagic = () => {
-    document.body.classList.remove('glitch-body');
-    void document.body.offsetWidth;
-    document.body.classList.add('glitch-body');
-    setTimeout(() => document.body.classList.remove('glitch-body'), 1600);
-    showNotif('✨ MAGIC INJECTED — Reality destabilized momentarily.');
-    showWarning({ msg: 'MAGIC_OVERFLOW', sub: 'Too much magic detected.\nSystem stability: 73%' });
+    showNotif('SYS_ADMIN GRANTED — Executing override.');
+    showWarning({ msg: 'SYS_OVERRIDE', sub: 'Manual override initiated.\nLogging action to mainframe.' });
   };
 
   const handleTermInput = (e) => {
@@ -142,88 +135,82 @@ export default function AboutWindow() {
     <OSWindow id="about" title={`ABOUT_ME.exe — ${ABOUT.developerName}`} defaultPos={{ x: 200, y: 80 }} width={580}>
       <div ref={bodyRef}>
         {/* System Quote */}
-        <div className="mb-4 text-[11px] text-purple-300 italic border-l-2 border-purple-500 pl-3 py-1"
-          style={{ background: 'rgba(139,92,246,0.06)' }}>
+        <div className="mb-5 text-[12px] text-[#aaa] border-l border-[#444] pl-3 py-1 font-mono bg-[#0D0D0D]">
           {SYSTEM_QUOTE}
         </div>
 
         {/* Header */}
-        <div className="flex items-center gap-4 mb-4">
-          <div className="w-14 h-14 rounded-full flex items-center justify-center text-[2rem] flex-shrink-0"
-            style={{ background: 'linear-gradient(135deg, rgba(139,92,246,0.3), rgba(255,110,199,0.2))', border: '2px solid rgba(139,92,246,0.5)', boxShadow: '0 0 20px rgba(139,92,246,0.3)' }}>
+        <div className="flex items-center gap-4 mb-5">
+          <div className="w-12 h-12 flex items-center justify-center text-[1.8rem] flex-shrink-0 border border-[#333] bg-[#111]">
             {ABOUT.avatarEmoji}
           </div>
           <div>
-            <div className="text-[15px] font-bold text-pink-400 mb-0.5" style={{ fontFamily: 'Orbitron, monospace' }}>
+            <div className="text-[16px] font-bold text-[#ededed] mb-1 font-mono tracking-tight">
               {ABOUT.developerName}
             </div>
-            <div className="text-[11px] text-purple-300">
-              PERSONALITY SCANNER: <span className="blink text-teal-300">ACTIVE</span>
+            <div className="text-[11px] text-[#888] font-mono">
+              STATUS: <span className="text-[#4CAF50]">ONLINE</span>
             </div>
-            <div className="text-[10px] text-gray-500">Scanning entity for creative capacity and technical anomalies...</div>
           </div>
         </div>
 
         {/* Bio typewriter */}
         <div
-          className="rounded-md mb-5 px-4 py-3 cursor-text typewriter-cursor"
-          style={{ background: 'rgba(30,26,46,0.8)', borderLeft: '3px solid #8b5cf6' }}
+          className="mb-6 cursor-text typewriter-cursor border-l-2 border-[#ededed] pl-3 py-1"
           onClick={skipBio}
           title="Click to skip typewriter"
         >
-          <p className="text-[12px] leading-relaxed text-gray-300">{bioTyped}</p>
+          <p className="text-[13px] leading-relaxed text-[#ccc] font-sans">{bioTyped}</p>
         </div>
 
         {/* Gauges */}
-        <div className="flex flex-col gap-3 mb-5">
+        <div className="flex flex-col gap-4 mb-6">
           {ABOUT.gauges.map(g => <Gauge key={g.label} {...g} />)}
         </div>
 
         {/* Skill Tree */}
-        <div className="text-[10px] text-teal-400 font-bold tracking-widest mb-2">— SKILL TREE</div>
+        <div className="text-[10px] text-[#888] font-bold tracking-widest mb-2 font-mono">— SKILL_TOPOLOGY</div>
         <SkillTree />
 
         {/* Action buttons */}
-        <div className="flex gap-3 flex-wrap mb-4">
+        <div className="flex gap-2 flex-wrap mb-5">
           <button onClick={runDiag}
-            className="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-[11px] px-5 py-2.5 rounded-lg border-0 cursor-pointer hover:brightness-110 transition-all shadow-lg"
+            className="bg-[#ededed] text-[#050505] font-bold font-mono text-[11px] px-4 py-2 rounded-sm cursor-pointer hover:bg-white transition-colors"
             aria-label="Run system diagnostic">
-            ⚡ RUN DIAGNOSTIC
+            [ RUN_DIAGNOSTIC ]
           </button>
           <button onClick={injectMagic}
-            className="font-bold text-[11px] px-5 py-2.5 rounded-lg cursor-pointer transition-all"
-            style={{ background: 'rgba(42,36,64,0.8)', border: '2px solid rgba(139,92,246,0.5)', color: '#e8e0ff' }}
+            className="bg-transparent border border-[#444] text-[#aaa] font-bold font-mono text-[11px] px-4 py-2 rounded-sm cursor-pointer hover:border-[#888] hover:text-[#ededed] transition-colors"
             aria-label="Inject magic">
-            ✨ INJECT MAGIC
+            [ OVERRIDE ]
           </button>
         </div>
 
         {/* Diagnostic terminal */}
         {diagOpen && (
-          <div className="mb-4 rounded-md p-3 text-[11px] text-green-400 leading-loose max-h-[160px] overflow-y-auto"
-            style={{ background: '#000', border: '1px solid #39ff82' }}>
+          <div className="mb-4 p-3 text-[11px] text-[#4CAF50] font-mono leading-loose max-h-[160px] overflow-y-auto bg-[#0A0A0A] border border-[#222]">
             {diagLines.map((l, i) => <div key={i}>{l}</div>)}
           </div>
         )}
 
         {/* ASK AagoshRaj_OS Terminal */}
-        <div className="rounded-md overflow-hidden" style={{ border: '1px solid rgba(139,92,246,0.4)', background: '#000' }}>
-          <div className="px-3 py-1.5 text-[10px] font-bold text-purple-400" style={{ borderBottom: '1px solid rgba(139,92,246,0.2)' }}>
-            ASK AagoshRaj_OS:
+        <div className="border border-[#222] bg-[#0A0A0A]">
+          <div className="px-3 py-1.5 text-[10px] font-bold text-[#888] font-mono border-b border-[#222] bg-[#111]">
+            TERMINAL // INPUT_REQUIRED
           </div>
-          <div className="p-2 max-h-[100px] overflow-y-auto text-[10px] text-green-400 leading-loose">
-            {termLog.length === 0 && <div className="text-gray-600">Type "help" for available commands...</div>}
-            {termLog.map((l, i) => <div key={i} className={l.startsWith('>') ? 'text-purple-300' : 'text-green-400'}>{l}</div>)}
+          <div className="p-3 max-h-[120px] overflow-y-auto text-[11px] font-mono text-[#ededed] leading-relaxed">
+            {termLog.length === 0 && <div className="text-[#666]">Type "help" for available commands...</div>}
+            {termLog.map((l, i) => <div key={i} className={l.startsWith('>') ? 'text-[#888]' : 'text-[#ededed]'}>{l}</div>)}
           </div>
-          <div className="flex items-center px-3 py-1.5" style={{ borderTop: '1px solid rgba(139,92,246,0.2)' }}>
-            <span className="text-purple-400 text-[10px] mr-2">AagoshRaj_OS$</span>
+          <div className="flex items-center px-3 py-2 border-t border-[#222] bg-[#0D0D0D]">
+            <span className="text-[#666] text-[11px] font-mono mr-2">ROOT$</span>
             <input
               value={typed}
               onChange={e => setTyped(e.target.value)}
               onKeyDown={handleTermInput}
-              className="flex-1 bg-transparent outline-none text-green-400 text-[11px] font-mono"
-              placeholder="enter command..."
-              aria-label="AagoshRaj_OS terminal input"
+              className="flex-1 bg-transparent outline-none text-[#ededed] text-[11px] font-mono"
+              placeholder="_"
+              aria-label="Terminal input"
             />
           </div>
         </div>

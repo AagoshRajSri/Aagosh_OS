@@ -11,56 +11,56 @@ export default function OsAboutWindow() {
   return (
     <OSWindow id="os-about" title="OS_Config.sys" defaultPos={{ x: 220, y: 100 }} width={480}>
       <div className="flex flex-col gap-6">
-        <div className="text-center pb-4 border-b border-purple-500/20">
-          <div className="text-[20px] font-bold text-pink-500" style={{ fontFamily: 'Orbitron, monospace' }}>AagoshRaj_OS</div>
-          <div className="text-[10px] text-gray-400 mt-1">Version 0.1.0-alpha (Cyber_Pop Build)</div>
-          <div className="text-[10px] text-purple-400 mt-1">Environment: PRODUCTION</div>
+        <div className="text-center pb-4 border-b border-[#333]">
+          <div className="text-[20px] font-bold text-[#ededed] font-mono tracking-tight">AagoshRaj_OS</div>
+          <div className="text-[10px] text-[#888] mt-1 font-mono">Version 0.2.0-beta (Retro_Minimal Build)</div>
+          <div className="text-[10px] text-[#666] mt-1 font-mono">Environment: PRODUCTION</div>
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="text-[11px] font-bold text-teal-400 tracking-widest">— SYSTEM PREFERENCES</div>
+          <div className="text-[11px] font-bold text-[#888] tracking-widest font-mono">— SYSTEM_PREFERENCES</div>
           
-          <div className="flex items-center justify-between bg-black/40 p-3 rounded border border-purple-500/30">
+          <div className="flex items-center justify-between bg-[#111] p-3 border border-[#222]">
             <div>
-              <div className="text-[12px] text-gray-200 font-bold">Audio System</div>
-              <div className="text-[9px] text-gray-500">Web Audio API OS SFX</div>
+              <div className="text-[12px] text-[#ededed] font-bold font-mono">Audio System</div>
+              <div className="text-[9px] text-[#666] font-mono">Web Audio API OS SFX</div>
             </div>
             <button
               onClick={() => setMuted(!muted)}
-              className={`px-4 py-1.5 rounded text-[10px] font-bold border ${muted ? 'bg-red-500/20 border-red-500 text-red-400' : 'bg-green-500/20 border-green-500 text-green-400'}`}
+              className={`px-4 py-1.5 text-[10px] font-bold font-mono border cursor-pointer transition-colors ${muted ? 'bg-[#1A0505] border-[#F44336] text-[#F44336]' : 'bg-[#051A0A] border-[#4CAF50] text-[#4CAF50]'}`}
             >
-              {muted ? 'MUTED' : 'ENABLED'}
+              {muted ? '[ MUTED ]' : '[ ENABLED ]'}
             </button>
           </div>
 
-          <div className="flex items-center justify-between bg-black/40 p-3 rounded border border-purple-500/30">
+          <div className="flex items-center justify-between bg-[#111] p-3 border border-[#222]">
             <div>
-              <div className="text-[12px] text-gray-200 font-bold">Developer Mode</div>
-              <div className="text-[9px] text-gray-500">Unlocks hidden tools and badges</div>
+              <div className="text-[12px] text-[#ededed] font-bold font-mono">Developer Mode</div>
+              <div className="text-[9px] text-[#666] font-mono">Unlocks hidden tools and badges</div>
             </div>
             <button
               onClick={() => setDevMode(!devMode)}
-              className={`px-4 py-1.5 rounded text-[10px] font-bold border ${devMode ? 'bg-yellow-500/20 border-yellow-500 text-yellow-400' : 'bg-gray-800 border-gray-600 text-gray-400'}`}
+              className={`px-4 py-1.5 text-[10px] font-bold font-mono border cursor-pointer transition-colors ${devMode ? 'bg-[#1A1505] border-[#FF9800] text-[#FF9800]' : 'bg-[#1A1A1A] border-[#444] text-[#888]'}`}
             >
-              {devMode ? 'ACTIVE' : 'INACTIVE'}
+              {devMode ? '[ ACTIVE ]' : '[ INACTIVE ]'}
             </button>
           </div>
 
-          <div className="flex items-center justify-between bg-black/40 p-3 rounded border border-purple-500/30">
+          <div className="flex items-center justify-between bg-[#111] p-3 border border-[#222]">
             <div>
-              <div className="text-[12px] text-gray-200 font-bold">Fireworks Protocol</div>
-              <div className="text-[9px] text-gray-500">Manual override for particle system</div>
+              <div className="text-[12px] text-[#ededed] font-bold font-mono">Fireworks Protocol</div>
+              <div className="text-[9px] text-[#666] font-mono">Manual override for particle system</div>
             </div>
             <button
               onClick={handleKonamiTip}
-              className="px-4 py-1.5 rounded text-[10px] font-bold border bg-purple-600/20 border-purple-500 text-purple-300 hover:bg-purple-600/40"
+              className="px-4 py-1.5 text-[10px] font-bold font-mono border bg-transparent border-[#444] text-[#aaa] hover:text-[#ededed] hover:border-[#888] transition-colors cursor-pointer"
             >
-              REQUEST
+              [ REQUEST ]
             </button>
           </div>
         </div>
 
-        <div className="text-center pt-4 border-t border-purple-500/20 text-[9px] text-gray-600">
+        <div className="text-center pt-4 border-t border-[#333] text-[9px] text-[#555] font-mono">
           Built with React, GSAP, and Tailwind CSS.<br/>
           No actual operating systems were harmed in the making of this portfolio.
         </div>

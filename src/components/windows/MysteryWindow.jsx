@@ -19,12 +19,12 @@ export default function MysteryWindow() {
 
   return (
     <OSWindow id="mystery" title="???.exe" defaultPos={{ x: 300, y: 150 }} width={400}>
-      <div className="flex flex-col items-center justify-center p-6 text-center h-[200px] bg-black/60 rounded border border-purple-500/20 mystery-glitch relative overflow-hidden">
-        <div className="text-4xl mb-4 opacity-50 filter drop-shadow-[0_0_10px_#ff6ec7]">👁️</div>
-        <div className="text-[12px] font-mono text-purple-300 leading-relaxed">
+      <div className="flex flex-col items-center justify-center p-6 text-center h-[200px] bg-[#111] rounded-sm border border-[#333] mystery-glitch relative overflow-hidden">
+        <div className="text-4xl mb-4 grayscale opacity-60">👁️</div>
+        <div className="text-[12px] font-mono text-[#ededed] leading-relaxed">
           {content}
         </div>
-        <div className="absolute inset-0 bg-red-500/10 mix-blend-overlay pointer-events-none led-blink" />
+        <div className="absolute inset-0 bg-[#F44336]/5 pointer-events-none led-blink mix-blend-screen" />
       </div>
     </OSWindow>
   );

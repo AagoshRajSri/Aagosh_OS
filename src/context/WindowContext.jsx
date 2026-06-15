@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useCallback, useRef } from 'react'
 
 const WindowContext = createContext(null);
 
-export const WINDOW_IDS = ['about', 'projects', 'project-detail', 'skills', 'experience', 'contact', 'mystery', 'os-about'];
+export const WINDOW_IDS = ['about', 'projects', 'project-detail', 'skills', 'experience', 'contact', 'mystery', 'os-about', 'certifications', 'resume'];
 
 const EXTENDED_WARNINGS = [
   { msg: 'POST_QUANTUM_ALERT', sub: 'ML-KEM-768 layer operational.\nQuantum adversaries mitigated.' },

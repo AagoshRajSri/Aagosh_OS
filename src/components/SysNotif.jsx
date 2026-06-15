@@ -24,12 +24,12 @@ function NotifItem({ notif, onDismiss }) {
     <div
       ref={ref}
       onClick={handleClose}
-      className="bg-black/80 border border-purple-500/50 rounded p-3 mb-2 w-[280px] shadow-[0_4px_12px_rgba(139,92,246,0.3)] cursor-pointer backdrop-blur-md"
+      className="bg-[#111] border border-[#333] rounded-sm p-3 mb-2 w-[280px] shadow-lg cursor-pointer"
       style={{ pointerEvents: 'auto' }}
       role="status"
     >
-      <div className="text-[10px] text-green-400 font-mono flex items-start gap-2">
-        <span className="text-purple-400 mt-0.5">&gt;</span>
+      <div className="text-[10px] text-[#ededed] font-mono flex items-start gap-2">
+        <span className="text-[#888] mt-0.5">&gt;</span>
         <span className="flex-1 leading-relaxed">{notif.msg}</span>
       </div>
     </div>

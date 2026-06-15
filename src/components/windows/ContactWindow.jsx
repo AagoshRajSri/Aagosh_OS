@@ -22,7 +22,7 @@ export default function ContactWindow() {
   };
 
   const signal = getSignalStrength();
-  const signalColor = signal < 40 ? '#ff4466' : signal < 80 ? '#ffe066' : '#39ff82';
+  const signalColor = signal < 40 ? '#F44336' : signal < 80 ? '#FF9800' : '#4CAF50';
 
   const handleTransmit = async (e) => {
     e.preventDefault();
@@ -50,7 +50,6 @@ export default function ContactWindow() {
       }
       await new Promise(r => setTimeout(r, 800));
 
-      // Sending using FormSubmit API direct to email
       const response = await fetch("https://formsubmit.co/ajax/aagosh0000@gmail.com", {
         method: "POST",
         headers: { 
@@ -82,10 +81,10 @@ export default function ContactWindow() {
     <OSWindow id="contact" title="Contact.exe — SECURE UPLINK TERMINAL" defaultPos={{ x: 260, y: 120 }} width={600}>
       <div className="flex flex-col h-full relative">
         {/* Signal Indicator */}
-        <div className="flex items-center gap-3 mb-6 bg-black/40 p-3 rounded-lg border border-purple-500/30">
-          <div className="text-[10px] text-purple-300 font-bold tracking-widest w-24">SIGNAL_STRENGTH</div>
-          <div className="flex-1 h-3 bg-gray-900 rounded-full overflow-hidden border border-gray-700">
-            <div className="signal-bar h-full" style={{ width: `${signal}%`, background: signalColor }} />
+        <div className="flex items-center gap-3 mb-6 bg-[#111] p-3 border border-[#333]">
+          <div className="text-[10px] text-[#888] font-bold tracking-widest w-24 font-mono">SIGNAL_STRENGTH</div>
+          <div className="flex-1 h-2 bg-[#050505] overflow-hidden border border-[#222]">
+            <div className="signal-bar h-full transition-all" style={{ width: `${signal}%`, background: signalColor }} />
           </div>
           <div className="text-[10px] font-mono font-bold w-8 text-right" style={{ color: signalColor }}>
             {signal}%
@@ -95,59 +94,59 @@ export default function ContactWindow() {
         {status === 'idle' && (
           <form ref={formRef} onSubmit={handleTransmit} className="flex flex-col gap-4 flex-1">
             <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] text-teal-500 font-bold ml-1">[AGENT CALLSIGN]</label>
+              <label className="text-[10px] text-[#aaa] font-bold ml-1 font-mono">[AGENT_CALLSIGN]</label>
               <input
                 type="text"
                 required
                 value={form.name}
                 onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
-                className="w-full bg-black/80 border border-purple-500/50 rounded px-4 py-2.5 text-green-400 text-[12px] font-mono outline-none focus:border-pink-500 focus:bg-black transition-colors shadow-inner"
+                className="w-full bg-[#050505] border border-[#333] px-4 py-2 text-[#ededed] text-[12px] font-mono outline-none focus:border-[#888] transition-colors"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] text-teal-500 font-bold ml-1">[FREQUENCY / EMAIL]</label>
+              <label className="text-[10px] text-[#aaa] font-bold ml-1 font-mono">[FREQUENCY/EMAIL]</label>
               <input
                 type="email"
                 required
                 value={form.email}
                 onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                className="w-full bg-black/80 border border-purple-500/50 rounded px-4 py-2.5 text-green-400 text-[12px] font-mono outline-none focus:border-pink-500 focus:bg-black transition-colors shadow-inner"
+                className="w-full bg-[#050505] border border-[#333] px-4 py-2 text-[#ededed] text-[12px] font-mono outline-none focus:border-[#888] transition-colors"
               />
             </div>
 
             <div className="flex flex-col gap-1.5 flex-1">
-              <label className="text-[10px] text-teal-500 font-bold ml-1">[TRANSMISSION]</label>
+              <label className="text-[10px] text-[#aaa] font-bold ml-1 font-mono">[TRANSMISSION_DATA]</label>
               <textarea
                 required
                 value={form.message}
                 onChange={e => setForm(p => ({ ...p, message: e.target.value }))}
-                className="w-full h-full min-h-[120px] bg-black/80 border border-purple-500/50 rounded px-4 py-3 text-green-400 text-[12px] font-mono outline-none focus:border-pink-500 focus:bg-black transition-colors resize-none shadow-inner"
+                className="w-full h-full min-h-[120px] bg-[#050505] border border-[#333] px-4 py-3 text-[#ededed] text-[12px] font-mono outline-none focus:border-[#888] transition-colors resize-none"
               />
             </div>
 
             <button
               type="submit"
-              className="mt-2 w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-[13px] tracking-widest py-3.5 rounded-lg border-0 cursor-pointer hover:brightness-110 shadow-[0_4px_15px_rgba(255,110,199,0.3)] transition-all active:translate-y-1 active:shadow-none"
+              className="mt-2 w-full bg-[#ededed] text-[#0A0A0A] font-bold font-mono text-[13px] tracking-widest py-3 cursor-pointer hover:bg-white transition-colors"
             >
-              TRANSMIT ↗
+              [ TRANSMIT ↗ ]
             </button>
           </form>
         )}
 
         {(status === 'sending' || status === 'log') && (
-          <div className="flex-1 flex flex-col justify-center items-center bg-black/80 rounded-lg border border-purple-500/30 p-6 min-h-[260px]">
+          <div className="flex-1 flex flex-col justify-center items-center bg-[#050505] border border-[#333] p-6 min-h-[260px]">
             {status === 'sending' && (
-              <div className="text-pink-500 font-bold text-[14px] tracking-widest flex items-center gap-3">
-                <span className="w-4 h-4 rounded-full border-2 border-pink-500 border-t-transparent animate-spin" />
+              <div className="text-[#ededed] font-bold font-mono text-[14px] tracking-widest flex items-center gap-3">
+                <span className="w-4 h-4 border-2 border-[#ededed] border-t-transparent animate-spin" />
                 ENCRYPTING...
               </div>
             )}
             {status === 'log' && (
-              <div ref={logRef} className="w-full text-left font-mono text-[11px] text-green-400 space-y-3">
+              <div ref={logRef} className="w-full text-left font-mono text-[11px] text-[#4CAF50] space-y-3">
                 {logs.map((log, i) => (
                   <div key={i} className="animate-[notif-slide_0.3s_ease-out_forwards]">
-                    <span className="text-purple-400 mr-2">&gt;</span>{log}
+                    <span className="text-[#888] mr-2">&gt;</span>{log}
                   </div>
                 ))}
               </div>
@@ -156,35 +155,35 @@ export default function ContactWindow() {
         )}
 
         {status === 'success' && (
-          <div className="flex-1 flex flex-col justify-center items-center bg-black/80 rounded-lg border border-green-500/50 p-6 text-center min-h-[260px] animate-[win-open_0.4s_ease-out]">
+          <div className="flex-1 flex flex-col justify-center items-center bg-[#050505] border border-[#4CAF50] p-6 text-center min-h-[260px] animate-[win-open_0.4s_ease-out]">
             <div className="text-4xl mb-4">✅</div>
-            <div className="text-green-400 font-bold text-[16px] mb-2 tracking-widest">TRANSMISSION SECURED</div>
-            <div className="text-gray-400 text-[11px] mb-6">Your message has been encrypted and delivered to the core. Expect a response soon.</div>
-            <button onClick={() => { setStatus('idle'); setForm({name:'', email:'', message:''}); setLogs([]); }} className="px-6 py-2 rounded border border-green-500 text-green-400 text-[11px] font-bold hover:bg-green-500/20 transition-colors cursor-pointer">
-              SEND ANOTHER
+            <div className="text-[#4CAF50] font-bold font-mono text-[16px] mb-2 tracking-widest">TRANSMISSION SECURED</div>
+            <div className="text-[#888] font-mono text-[11px] mb-6">Your message has been encrypted and delivered to the core. Expect a response soon.</div>
+            <button onClick={() => { setStatus('idle'); setForm({name:'', email:'', message:''}); setLogs([]); }} className="px-6 py-2 border border-[#4CAF50] text-[#4CAF50] text-[11px] font-bold font-mono hover:bg-[#4CAF50] hover:text-[#0A0A0A] transition-colors cursor-pointer">
+              [ SEND_ANOTHER ]
             </button>
           </div>
         )}
 
         {status === 'error' && (
-          <div className="flex-1 flex flex-col justify-center items-center bg-black/80 rounded-lg border border-red-500/50 p-6 text-center min-h-[260px] animate-[shake_0.4s_ease-in-out]">
-            <div className="text-4xl mb-4 text-red-500">⚠</div>
-            <div className="text-red-500 font-bold text-[16px] mb-2 tracking-widest blink">SIGNAL LOST</div>
-            <div className="text-gray-400 text-[11px] mb-6">Failed to establish connection. The transmission was dropped.</div>
-            <button onClick={() => { setStatus('idle'); setLogs([]); }} className="px-6 py-2 rounded border border-red-500 text-red-500 text-[11px] font-bold hover:bg-red-500/20 transition-colors cursor-pointer">
-              RETRY CONNECTION
+          <div className="flex-1 flex flex-col justify-center items-center bg-[#050505] border border-[#F44336] p-6 text-center min-h-[260px] animate-[shake_0.4s_ease-in-out]">
+            <div className="text-4xl mb-4 text-[#F44336]">⚠</div>
+            <div className="text-[#F44336] font-bold font-mono text-[16px] mb-2 tracking-widest blink">SIGNAL LOST</div>
+            <div className="text-[#888] font-mono text-[11px] mb-6">Failed to establish connection. The transmission was dropped.</div>
+            <button onClick={() => { setStatus('idle'); setLogs([]); }} className="px-6 py-2 border border-[#F44336] text-[#F44336] text-[11px] font-bold font-mono hover:bg-[#F44336] hover:text-[#0A0A0A] transition-colors cursor-pointer">
+              [ RETRY_CONNECTION ]
             </button>
           </div>
         )}
 
         {/* Direct Channel */}
-        <div className="mt-6 pt-4 border-t border-purple-500/20 text-center">
-          <div className="text-[9px] text-gray-500 font-bold tracking-widest mb-3">— DIRECT CHANNEL —</div>
+        <div className="mt-6 pt-4 border-t border-[#333] text-center">
+          <div className="text-[9px] text-[#666] font-bold font-mono tracking-widest mb-3">— DIRECT_CHANNEL —</div>
           <div className="flex justify-center gap-6">
-            <a href="https://github.com/aagoshrajsrivastava" target="_blank" rel="noreferrer" className="text-2xl hover:scale-125 transition-transform hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" style={{ color: '#e8e0ff' }}>
+            <a href="https://github.com/aagoshrajsrivastava" target="_blank" rel="noreferrer" className="text-2xl hover:scale-125 transition-transform grayscale hover:grayscale-0">
               🐙
             </a>
-            <a href="https://linkedin.com/in/aagoshrajsrivastava" target="_blank" rel="noreferrer" className="text-2xl hover:scale-125 transition-transform hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]" style={{ color: '#3b82f6' }}>
+            <a href="https://linkedin.com/in/aagoshrajsrivastava" target="_blank" rel="noreferrer" className="text-2xl hover:scale-125 transition-transform grayscale hover:grayscale-0">
               💼
             </a>
           </div>

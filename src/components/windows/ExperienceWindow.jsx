@@ -7,55 +7,53 @@ function QuestEntry({ quest, index }) {
   const ref = useRef(null);
 
   useEffect(() => {
-    // Staggered slide in from the right
     gsap.fromTo(ref.current,
-      { opacity: 0, x: 40 },
-      { opacity: 1, x: 0, duration: 0.5, ease: 'back.out(1.2)', delay: index * 0.15 + 0.3 }
+      { opacity: 0, x: 20 },
+      { opacity: 1, x: 0, duration: 0.4, ease: 'power2.out', delay: index * 0.1 }
     );
   }, [index]);
 
   return (
-    <div ref={ref} className="relative pl-6 pb-8 border-l-2 border-purple-500/30 last:border-transparent last:pb-0">
+    <div ref={ref} className="relative pl-6 pb-8 border-l border-[#333] last:border-transparent last:pb-0">
       {/* Timeline Node */}
-      <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full border-2 border-[#0A0020] flex items-center justify-center"
-           style={{ background: quest.completed ? '#ffe066' : '#39ff82', boxShadow: `0 0 8px ${quest.completed ? '#ffe066' : '#39ff82'}` }}>
-        {quest.completed && <span className="text-black text-[10px]">✓</span>}
+      <div className="absolute left-[-5px] top-0 w-2 h-2 rounded-sm bg-[#0A0A0A] border border-[#666] flex items-center justify-center"
+           style={{ borderColor: quest.completed ? '#4CAF50' : '#FF9800' }}>
       </div>
 
-      <div className="bg-black/40 border border-purple-500/20 rounded-lg p-4 hover:border-pink-500/50 transition-colors shadow-lg">
+      <div className="bg-[#111] border border-[#222] p-4 hover:border-[#444] transition-colors rounded-sm">
         {/* Header */}
         <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-2 mb-3">
           <div>
-            <div className="text-[10px] text-gray-500 font-mono mb-1">{quest.version}</div>
-            <div className="text-[15px] font-bold text-pink-400 leading-tight">{quest.title}</div>
-            <div className="text-[11px] text-teal-400">{quest.company}</div>
+            <div className="text-[10px] text-[#666] font-mono mb-1">{quest.version}</div>
+            <div className="text-[14px] font-bold text-[#ededed] leading-tight font-mono tracking-tight">{quest.title}</div>
+            <div className="text-[11px] text-[#888] font-mono">{quest.company}</div>
           </div>
-          <div className="flex flex-col sm:items-end gap-1 flex-shrink-0">
-            <span className="text-[9px] text-gray-400 whitespace-nowrap bg-gray-900 px-2 py-0.5 rounded border border-gray-800">
+          <div className="flex flex-col sm:items-end gap-2 flex-shrink-0">
+            <span className="text-[9px] text-[#aaa] font-mono whitespace-nowrap bg-[#1A1A1A] px-2 py-0.5 rounded-sm border border-[#333]">
               {quest.period}
             </span>
-            <span className="text-[10px] font-bold text-yellow-400 bg-yellow-400/10 px-2 py-0.5 rounded border border-yellow-400/30">
+            <span className="text-[10px] font-bold font-mono text-[#ededed] bg-[#222] px-2 py-0.5 rounded-sm border border-[#444]">
               {quest.xp}
             </span>
           </div>
         </div>
 
         {/* Body */}
-        <p className="text-[11px] text-gray-300 leading-relaxed mb-4">
+        <p className="text-[12px] text-[#aaa] leading-relaxed mb-4 font-sans">
           {quest.desc}
         </p>
 
         {/* Rewards / Status */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-purple-500/20">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#222]">
           <div className="flex flex-wrap gap-1.5">
             {quest.rewards.map(r => (
-              <span key={r} className="text-[9px] text-purple-300 bg-purple-900/40 px-2 py-0.5 rounded-full border border-purple-500/30">
+              <span key={r} className="text-[9px] font-mono text-[#888] bg-[#1A1A1A] px-2 py-0.5 rounded-sm border border-[#333]">
                 + {r}
               </span>
             ))}
           </div>
-          <div className="text-[10px] font-bold tracking-widest flex items-center gap-1.5" style={{ color: quest.completed ? '#8b5cf6' : '#39ff82' }}>
-            {!quest.completed && <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />}
+          <div className="text-[10px] font-bold tracking-widest font-mono flex items-center gap-1.5" style={{ color: quest.completed ? '#888' : '#4CAF50' }}>
+            {!quest.completed && <span className="w-1.5 h-1.5 bg-[#4CAF50] animate-pulse" />}
             {quest.status}
           </div>
         </div>
@@ -66,7 +64,7 @@ function QuestEntry({ quest, index }) {
 
 export default function ExperienceWindow() {
   return (
-    <OSWindow id="experience" title="Experience.log — QUEST JOURNAL" defaultPos={{ x: 180, y: 50 }} width={640} maxBodyH="70vh">
+    <OSWindow id="experience" title="Experience.log — MISSION_ARCHIVE" defaultPos={{ x: 180, y: 50 }} width={640} maxBodyH="70vh">
       <div className="pl-2 pt-2">
         {EXPERIENCE.map((q, i) => (
           <QuestEntry key={i} quest={q} index={i} />
@@ -74,8 +72,8 @@ export default function ExperienceWindow() {
         
         {/* End of timeline indicator */}
         <div className="relative pl-6 mt-4">
-          <div className="absolute left-[-5px] top-2 w-2 h-2 rounded-full bg-purple-500/50" />
-          <div className="text-[10px] text-gray-500 italic">...awaiting new quests...</div>
+          <div className="absolute left-[-3px] top-2 w-1.5 h-1.5 bg-[#444] rounded-sm" />
+          <div className="text-[10px] text-[#555] font-mono italic">...awaiting new parameters...</div>
         </div>
       </div>
     </OSWindow>
