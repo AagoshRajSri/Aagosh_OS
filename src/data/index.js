@@ -1,7 +1,7 @@
 export const ABOUT = {
   developerName: "Aagosh Raj Srivastava",
   avatarEmoji: "⚡",
-  shortBio: "Hi! I'm Aagosh — a full-stack engineer and distributed systems enthusiast focused on building scalable, performant architectures and secure applications. I enjoy bridging data pipeline efficiency with high-performance visualization to deliver impactful software.",
+  shortBio: "Hey, I'm Aagosh. I'm a full-stack engineer who loves tinkering with distributed systems and building things that run fast and rarely break. From crunching heavy data pipelines to crafting sleek UI visualizations, I focus on shipping software that actually makes an impact.",
   gauges: [
     { label: "PROBLEM_SOLVING", val: "95%", pct: 95, cls: "gauge-pink", valCls: "text-pink" },
     { label: "COFFEE_INTAKE", val: "NOMINAL", pct: 85, cls: "gauge-teal", valCls: "text-teal-400" },
