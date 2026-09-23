@@ -41,7 +41,7 @@ function ProjectCard({ project, onClick }) {
     gsap.to(cardRef.current, { rotateX: 0, rotateY: 0, duration: 0.4, ease: 'elastic.out(1, 0.5)' });
   };
 
-  const isUnderConstruction = project.id === 'raj-ai';
+  const isUnderConstruction = project.id === 'latent-twin';
 
   return (
     <div
@@ -88,7 +88,7 @@ function ProjectDetail({ project }) {
   const cardRef = useRef(null);
 
   useEffect(() => {
-    if (project.id === 'raj-ai') return;
+    if (project.id === 'latent-twin') return;
     intervalRef.current = setInterval(() => {
       setMatrix(Array.from({ length: 120 }, () =>
         MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)]

@@ -1,4 +1,5 @@
 import OSWindow from '../OSWindow';
+// Professional Dossier & Resume Component
 import resumePdf from '../../assets/aagoshrajSDE.pdf';
 
 export default function ResumeWindow() {

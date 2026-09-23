@@ -32,152 +32,164 @@
   },
   "projects": [
     {
-      "id": "raj-ai",
-      "filename": "RAJ_AI_CORE.bin",
-      "name": "RAJ-AI",
+      "id": "sentinel-ai",
+      "filename": "SENTINEL-AI.clearance.json",
+      "name": "SENTINEL-AI",
       "clearance": "5",
-      "desc": "A hardware-independent, fully autonomous software platform designed to replace fragmented human-operated tools with a unified system capable of executing complex, multi-domain tasks end-to-end without manual intervention. Features a dedicated Kotlin API gateway layer, expanded microservice cluster, a Flutter multi-platform UI, and an elevated Python AI tier serving as the primary intelligence engine.",
-      "tags": [
-        "Python",
-        "Flutter",
-        "Kotlin",
-        "Microservices",
-        "AI Orchestration"
-      ],
+      "status": "production",
+      "desc": "Offline-reproducible enterprise support triage and RAG drafting pipeline built with Python 3.10+, Pydantic v2, SentenceTransformers all-MiniLM-L6-v2, and an in-memory FAISS IndexFlatIP over 15,000 historical resolutions. Its calibrated two-pass safety gate reduced escalation false-negative rate to 34.9%, achieved sub-1ms vector retrieval, Macro-F1 of 0.583, and Cohen's Kappa of 0.558 across a 250-case benchmark.",
+      "tags": ["Python", "FAISS", "RAG", "Safety-Critical AI"],
       "specs": {
-        "Type": "Autonomous Software Platform",
-        "Status": "PROPOSED / ENHANCED",
+        "Type": "Recall-biased AI triage and retrieval-augmented generation",
+        "Status": "PRODUCTION",
         "Clearance": "LEVEL-5",
-        "Intelligence Engine": "Python AI Tier"
+        "Key Metric": "<1ms FAISS retrieval; 34.9% escalation FNR"
       },
-      "demo": "https://github.com/aagoshrajsrivastava",
-      "source": "https://github.com/aagoshrajsrivastava"
+      "demo": "https://huggingface.co/spaces/AagoshRaj/sentinel-ai",
+      "source": "https://github.com/AagoshRajSri/SENTINEL-AI"
+    },
+    {
+      "id": "latent-twin",
+      "filename": "LATENT-TWIN.clearance.json",
+      "name": "LatentTwin",
+      "clearance": "5",
+      "status": "in-progress",
+      "desc": "A multi-service architecture intelligence platform that converts repository trees into interactive 2D/3D dependency graphs using ReactFlow, Three.js, Fastify, TypeScript, Octokit, simple-git, and AST-oriented analysis. The analysis service exposes asynchronous job submission, Server-Sent Events progress streaming, Gemini/Anthropic diagnostics, bounded concurrency, 24-hour caching, 50MB repository limits, and a 5,000-file rejection ceiling.",
+      "tags": ["Architecture Intelligence", "Fastify", "Three.js", "AI Diagnostics"],
+      "specs": {
+        "Type": "Repository analysis and digital-twin visualization platform",
+        "Status": "WIP",
+        "Clearance": "LEVEL-5",
+        "Key Metric": "<200ms cache hits; MAX_CONCURRENT_JOBS=3"
+      },
+      "demo": "https://latent-twin.vercel.app",
+      "source": "https://github.com/AagoshRajSri/LatentTwin"
     },
     {
       "id": "orbit",
-      "filename": "ORBIT_PQC.sys",
+      "filename": "ORBIT.clearance.json",
       "name": "ORBIT",
-      "clearance": "4",
-      "desc": "Scalable Post-Quantum Messaging Platform. Architected a high-concurrency engine utilizing Socket.IO and a Redis adapter for horizontal scaling (100+ concurrent broadcasts, sub-100ms latency). Features an offline-first queuing system and a post-quantum zero-trust defense layer integrating X3DH, Double Ratchet, Argon2id, and ML-KEM-768 resistance to mitigate OWASP threat vectors.",
-      "tags": [
-        "Socket.IO",
-        "Redis",
-        "Node.js",
-        "ML-KEM-768",
-        "Argon2id",
-        "Docker"
-      ],
+      "clearance": "5",
+      "status": "production",
+      "desc": "A real-time secure collaboration platform using Node.js, Express 5, Socket.IO 4.8, Redis via the Socket.IO Redis adapter, MongoDB/Mongoose, and MessagePack transport. The security boundary combines ML-KEM-768 through mlkem, Argon2id, WebAuthn, OTP authentication, JWT, Helmet, HPP, rate-limit-redis, and Dockerized deployment with a React 19, Three.js, Zustand, and virtualized frontend.",
+      "tags": ["Distributed Systems", "Post-Quantum Crypto", "Socket.IO", "Redis"],
       "specs": {
-        "Type": "Distributed Messaging Backbone",
+        "Type": "Secure real-time messaging and collaboration backbone",
         "Status": "PRODUCTION",
-        "Clearance": "LEVEL-4",
-        "Security": "Post-Quantum Zero-Trust"
+        "Clearance": "LEVEL-5",
+        "Key Metric": "Redis-adapter horizontal scaling with MessagePack transport"
       },
-      "demo": "https://github.com/aagoshrajsrivastava",
-      "source": "https://github.com/aagoshrajsrivastava"
-    },
-    {
-      "id": "prahar",
-      "filename": "PRAHAR_GEO.intel",
-      "name": "PRAHAR",
-      "clearance": "4",
-      "desc": "Enterprise Geospatial Intelligence Platform. Engineered an event-driven telemetry pipeline using Socket.io and a localized 'memoryEngine' cache layer to broadcast 2-second heatmap ticks, slashing alert latency from 15s to <2s. Deployed GPU-accelerated Three.js and WebGL rendering pipelines to visualize 100K+ live geospatial points at a stable 60 FPS.",
-      "tags": [
-        "Three.js",
-        "WebGL",
-        "Socket.io",
-        "JWT",
-        "Proximity Search"
-      ],
-      "specs": {
-        "Type": "Geospatial Intelligence Engine",
-        "Status": "PRODUCTION",
-        "Clearance": "LEVEL-4",
-        "Performance": "60 FPS / 100K+ Live Points"
-      },
-      "demo": "https://github.com/aagoshrajsrivastava",
-      "source": "https://github.com/aagoshrajsrivastava"
-    },
-    {
-      "id": "forge-ai",
-      "filename": "FORGE_AI.saas",
-      "name": "FORGE AI",
-      "clearance": "3",
-      "desc": "Intelligent AI Code Generation Platform. Architected a dual-model pipeline routing between Qwen 32B/7B to optimize inference, cutting latency to sub-60s across 1,000+ daily requests with a 95% success rate and credit-safe refund logic. Paired with serverless PostgreSQL and Prisma backend to support 5K concurrent profiles.",
-      "tags": [
-        "Qwen 32B/7B",
-        "Prisma",
-        "PostgreSQL",
-        "React",
-        "SaaS UI"
-      ],
-      "specs": {
-        "Type": "AI Code Generation Platform",
-        "Status": "LIVE",
-        "Clearance": "LEVEL-3",
-        "Concurrency": "5K Active Profiles"
-      },
-      "demo": "https://github.com/aagoshrajsrivastava",
-      "source": "https://github.com/aagoshrajsrivastava"
+      "demo": "https://orbitnexus.vercel.app",
+      "source": "https://github.com/AagoshRajSri/Orbit"
     },
     {
       "id": "nextrole",
-      "filename": "NEXTROLE.zip",
+      "filename": "NEXTROLE.clearance.json",
       "name": "NextRole",
-      "clearance": "3",
-      "desc": "A browser extension + backend system that autonomously monitors career pages, extracts job listings via Playwright, and delivers intelligent alerts. Built for job-seekers who refuse to miss an opportunity.",
-      "tags": [
-        "Node.js",
-        "PostgreSQL",
-        "Playwright",
-        "WXT",
-        "Redis"
-      ],
+      "clearance": "5",
+      "status": "active",
+      "desc": "A Manifest V3 WXT browser co-pilot connected to an Express API, PostgreSQL/Prisma data layer, Redis-backed BullMQ workers, Playwright ATS crawlers, Socket.IO alerts, and AWS Bedrock Claude/Titan workflows. The system reports 128 passing Vitest tests, 94.5% LinkedIn extraction success, 92% cross-platform duplicate suppression, 99.2% location matching accuracy, and AES-256-GCM session-cookie protection.",
+      "tags": ["Browser Automation", "BullMQ", "Playwright", "AWS Bedrock"],
       "specs": {
-        "Type": "Full-Stack Extension",
-        "Status": "PRODUCTION",
-        "Clearance": "LEVEL-3",
-        "Performance": "15-min scan cycle"
+        "Type": "Distributed career intelligence and browser automation platform",
+        "Status": "ACTIVE",
+        "Clearance": "LEVEL-5",
+        "Key Metric": "128 tests; 94.5% LinkedIn extraction success"
       },
-      "demo": "https://example.com/demo1",
-      "source": "https://github.com/example/project1"
+      "demo": "#",
+      "source": "https://github.com/AagoshRajSri/NextRole"
+    },
+    {
+      "id": "forge-ai",
+      "filename": "FORGE-AI.clearance.json",
+      "name": "FORGE AI",
+      "clearance": "4",
+      "status": "production",
+      "desc": "A full-stack prompt-to-website generation system built with React 19, Vite 7, TypeScript 5.9, Tailwind CSS 4, GSAP, Node.js, Express 5, Neon Serverless PostgreSQL, Prisma 5.22, Better Auth, BullMQ, Redis, Stripe, and WebSockets. Its architecture routes Qwen2.5-Coder-32B for initial structural synthesis and 7B models for rapid refinement, then applies non-destructive Morphdom updates with version history and rollback support.",
+      "tags": ["Generative AI", "Qwen", "Prisma", "Serverless PostgreSQL"],
+      "specs": {
+        "Type": "AI-assisted full-stack website generation platform",
+        "Status": "PRODUCTION",
+        "Clearance": "LEVEL-4",
+        "Key Metric": "Dual-model 32B/7B generation and refinement pipeline"
+      },
+      "demo": "https://forge-ai-gamma.vercel.app",
+      "source": "https://github.com/AagoshRajSri/Forge-AI"
+    },
+    {
+      "id": "sportzlive",
+      "filename": "SPORTZLIVE.clearance.json",
+      "name": "SportzLive",
+      "clearance": "4",
+      "status": "active",
+      "desc": "A real-time sports telemetry platform built with Node.js, Express 5, ws WebSockets, Neon PostgreSQL, Drizzle ORM, Zod, React 19, Vite 8, Tailwind CSS, and GSAP. It broadcasts score deltas and commentary over persistent WebSocket connections while using GPU-composited GSAP force3D animations, React error-boundary recovery, and type-safe Drizzle migrations for a data-dense dashboard tested at 60 FPS.",
+      "tags": ["Real-Time Systems", "WebSockets", "Drizzle ORM", "GPU UI"],
+      "specs": {
+        "Type": "Live telemetry and high-performance visualization dashboard",
+        "Status": "ACTIVE",
+        "Clearance": "LEVEL-4",
+        "Key Metric": "60 FPS animated panels with persistent WebSocket updates"
+      },
+      "demo": "#",
+      "source": "https://github.com/AagoshRajSri/SportzLive"
     }
   ],
   "skills": [
     {
-      "name": "Java & Spring Boot",
-      "category": "BACK-END ALCHEMY",
-      "level": 95,
-      "power_title": "Enterprise Cloud Scale",
-      "desc": "Spring Boot, Spring Cloud, microservice architecture, and robust distributed systems design."
+      "name": "Distributed Real-Time Systems",
+      "cat": "BACK-END",
+      "level": 92,
+      "power": "Event-Driven Backbone",
+      "desc": "Production-oriented use of Socket.IO, ws, Redis adapters, BullMQ workers, WebSockets, SSE, idempotent processing, and asynchronous service boundaries."
     },
     {
-      "name": "Node.js & Express",
-      "category": "BACK-END ALCHEMY",
-      "level": 96,
-      "power_title": "Async Event-Loop Mastery",
-      "desc": "High-concurrency real-time architectures, Socket.IO, Fastify pipelines, and event streaming."
+      "name": "AI/ML Orchestration",
+      "cat": "INTELLIGENCE",
+      "level": 91,
+      "power": "Inference Pipeline Design",
+      "desc": "Builds multi-stage AI systems combining model routing, deterministic evaluation, RAG, vector retrieval, safety gates, Gemini/Anthropic integrations, AWS Bedrock, and offline caches."
     },
     {
-      "name": "React 18+ & Three.js",
-      "category": "FRONT-END SORCERY",
-      "level": 94,
-      "power_title": "GPU-Accelerated Interfaces",
-      "desc": "WebGL rendering, Vite, Zustand state loops, frustum culling, and fluid GSAP animations."
+      "name": "Applied Cryptography",
+      "cat": "SECURITY",
+      "level": 88,
+      "power": "Post-Quantum Security",
+      "desc": "Implements ML-KEM-768, Argon2id, WebAuthn, MFA, AES-256-GCM, HMAC-SHA256 verification, JWT controls, PII guardrails, and rate-limited security boundaries."
     },
     {
-      "name": "PostgreSQL & Redis",
-      "category": "BACK-END ALCHEMY",
-      "level": 93,
-      "power_title": "High-Performance Persistence",
-      "desc": "Proximity proximity-search, compound index lookup tuning, lean data projections, and caching backbones."
+      "name": "High-Performance UI Engineering",
+      "cat": "FRONT-END",
+      "level": 87,
+      "power": "GPU-Accelerated Interfaces",
+      "desc": "Uses React 19, Three.js, React Three Fiber, ReactFlow, GSAP force3D, virtualization, WebGL, Vite, and compositing strategies for real-time and data-dense interfaces."
     },
     {
-      "name": "Docker & Kubernetes",
-      "category": "DEVOPS GUARD",
-      "level": 90,
-      "power_title": "Orchestrated Infrastructure",
-      "desc": "Container deployments, CI/CD with GitHub Actions, Prometheus metrics, and Grafana telemetry."
+      "name": "Data Platforms and ORMs",
+      "cat": "DATABASES",
+      "level": 84,
+      "power": "Typed Persistence",
+      "desc": "Works across PostgreSQL, Neon Serverless, Prisma, Drizzle ORM, MongoDB/Mongoose, Redis, pgvector, FAISS, migration workflows, caching, and connection-resilient serverless access."
+    },
+    {
+      "name": "Browser Automation",
+      "cat": "INTELLIGENCE",
+      "level": 86,
+      "power": "Autonomous Web Agents",
+      "desc": "Develops WXT Manifest V3 extensions, Playwright crawlers, ATS-specific extraction fallbacks, stealth workflows, cookie synchronization, deduplication, and multi-channel alerting."
+    },
+    {
+      "name": "Deployment and Reliability",
+      "cat": "DEVOPS",
+      "level": 78,
+      "power": "Failure-Aware Delivery",
+      "desc": "Uses Docker, Docker Compose, Vercel, Render, Hugging Face Spaces, serverless database drivers, deterministic test harnesses, cache limits, retry backoff, and production migration checks."
+    },
+    {
+      "name": "Architecture Visualization",
+      "cat": "INTELLIGENCE",
+      "level": 85,
+      "power": "Living System Maps",
+      "desc": "Transforms repositories and service graphs into interactive digital twins with AST parsing, dependency classification, SSE progress streams, 2D/3D graph rendering, and AI-assisted repair."
     }
   ],
   "experience": [
@@ -227,7 +239,7 @@
     "> Checking empathy module... [NOMINAL]",
     "> Analyzing post-quantum engine... [SECURED]",
     "> Running caffeine dependency check... [ERR: OVERFLOW]",
-    "> Mapping project history... [5 active operations]",
+    "> Mapping project history... [6 active operations]",
     "> Evaluating distributed consensus... [HIGH SYNC RATE]",
     "> Final assessment: ENTITY_TYPE = Distributed Systems Engineer",
     "> Recommendation: HIRE IMMEDIATELY",
@@ -240,11 +252,24 @@
     },
     {
       "msg": "ANOMALY_DETECTED",
-      "sub": "Autonomous architecture active:\n'RAJ-AI' executing tasks without human prompt."
+      "sub": "Autonomous architecture active:\n'SENTINEL-AI' executing tasks without human prompt."
     },
     {
       "msg": "MEMORY_WARNING",
       "sub": "Processing dense geospatial streams.\nThree.js GPU frustum culling engaged."
     }
+  ],
+  "diff_recommendations": [
+    "Add SENTINEL-AI as the newest and strongest AI reliability flagship; it is updated on 2026-09-23 and has quantified benchmark evidence.",
+    "Add LatentTwin as a new clearance file; it introduces repository intelligence, AST graph analysis, asynchronous Fastify microservices, SSE, AI diagnostics, and 3D architecture visualization.",
+    "Consider replacing the older RAJ-AI / Ekam entry unless a corresponding public repository can be identified; it was not present in the scanned public repository list.",
+    "Consider replacing or demoting PRAHAR until its README and manifests are synchronized with the implementation. The current README lists alternative or aspirational technologies such as Kafka/RabbitMQ, Kubernetes, Elasticsearch, Prometheus, Grafana, Vue, Angular, and Babylon.js without repository-level dependency evidence.",
+    "Correct PRAHAR's stale metadata: the README advertises Node.js v16+, while the repository was updated in 2026 and should document the actual runtime and pinned dependencies.",
+    "Update NextRole's portfolio stack from generic Playwright/WXT/Node.js/Redis to the verified stack: WXT 0.20.26, React 19.2.4, TypeScript 5.9.3, Express 4.19.2, Prisma 6.19.3, PostgreSQL with pgvector, Redis/BullMQ, Playwright 1.60.0, AWS Bedrock SDK 3.1049.0, Socket.IO 4.8.3, and Vitest 4.1.8.",
+    "Update ORBIT's portfolio entry to explicitly include ML-KEM-768 via mlkem, Socket.IO Redis adapter, MessagePack parsing, WebAuthn, Argon2, MongoDB/Mongoose, Docker Compose, React Three Fiber, and Zustand.",
+    "Update FORGE AI's portfolio entry to reflect the verified React 19/Vite 7/Tailwind 4/Express 5/Prisma 5.22/Neon/BullMQ/Redis/Better Auth/Stripe stack rather than only listing React, PostgreSQL, and Prisma.",
+    "Add SportzLive as a candidate flagship or secondary clearance file for real-time telemetry and GPU-composited UI; its repository contains a more concrete dependency manifest and a documented 60 FPS target than the current PRAHAR documentation.",
+    "Verify all live demo URLs periodically. Confirm availability for orbitnexus.vercel.app, prahar-eight.vercel.app, forge-ai-gamma.vercel.app, latent-twin.vercel.app, dmfloww.vercel.app, and the Hugging Face Sentinel-AI Space before publishing them.",
+    "Avoid presenting README-reported benchmark values as independently verified production SLAs. Label metrics such as 60 FPS, 94.5% extraction success, 34.9% escalation FNR, and 0.558 Cohen's Kappa as repository evaluation results unless external telemetry is available."
   ]
 }
