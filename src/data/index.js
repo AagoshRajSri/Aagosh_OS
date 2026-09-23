@@ -1,7 +1,7 @@
 export const ABOUT = {
   developerName: "Aagosh Raj Srivastava",
   avatarEmoji: "⚡",
-  shortBio: "Hey, I'm Aagosh. I'm a full-stack engineer who loves tinkering with distributed systems and building things that run fast and rarely break. From crunching heavy data pipelines to crafting sleek UI visualizations, I focus on shipping software that actually makes an impact.",
+  shortBio: "Hey, I'm Aagosh. I'm a Software & AI Engineer who specializes in architecting high-performance distributed systems and intelligent applications. From designing sub-millisecond vector retrieval pipelines and LLM workflows to building resilient, low-latency microservices, I thrive at the intersection of hardcore software engineering and generative AI.",
   gauges: [
     { label: "PROBLEM_SOLVING", val: "95%", pct: 95, cls: "gauge-pink", valCls: "text-pink" },
     { label: "COFFEE_INTAKE", val: "NOMINAL", pct: 85, cls: "gauge-teal", valCls: "text-teal-400" },
