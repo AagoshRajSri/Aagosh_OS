@@ -1,6 +1,8 @@
 {
   "name": "portfolio-new",
   "version": "0.0.0",
+  "description": "Aagosh_OS: A tactile, interactive operating system masquerading as a portfolio.",
+  "author": "Aagosh Raj Srivastava",
   "private": true,
   "type": "module",
   "scripts": {
